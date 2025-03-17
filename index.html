@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffecb3;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+            padding: 0 20px;
+        }
+        h1 {
+            color: #ff4081;
+        }
+        p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        .gallery img, .surprise-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+        .btn {
+            background-color: #ff4081;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #e91e63;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday,Miss Jyotirmayee Chinky Kumari Mahanta! 🎉🎂</h1>
+        <p>What better way to celebrate than with an IT board exam? 🤡 While others are unwrapping gifts, you’ll be unwrapping question papers! 😂 But don’t worry—just think of the exam as a simple ‘Next Next Finish’ installation, and you’ll pass with flying colors! 😆 May your answers be as smooth as copy-paste and your marks be higher than your phone’s screen time! 📱🔥 Good luck, and don’t crash like a Windows update! 😂🎉 All jokes aside, you got this! Smash the exam, and then we’ll party like you just hacked into NASA! 🚀💻🔥</p>
+        
+        <div class="gallery" id="photoGallery">
+            <!-- Photos will be inserted here dynamically -->
+        </div>
+        
+        <button class="btn" onclick="showSurprise()">Click for a Surprise!</button>
+        <p><br><br>Arey niche scroll toh kar mankedi</p>
+        <div id="surpriseContainer" style="margin-top: 20px;"></div>
+    </div>
+
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img id="modalImage" src="" alt="Full Size Image">
+    </div>
+
+    <script>
+        const photos = [
+            'photo-1.jpg', 'photo-2.jpg', 'photo-3.jpg', 'photo-4.jpg', 'photo-5.jpg', 'photo-6.jpg', 'photo-7.jpg', 'photo-8.jpg', 'photo-9.jpg', 'photo-10.jpg', 'photo-11.jpg', 'photo-12.jpg', 'photo-13.jpg', 'photo-14.jpg', 'photo-15.jpg' // Add your images here
+        ];
+
+        const gallery = document.getElementById('photoGallery');
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        
+        photos.forEach(photo => {
+            let img = document.createElement('img');
+            img.src = photo;
+            img.alt = "Birthday Photo";
+            img.onclick = function(event) {
+                event.stopPropagation(); // Prevents modal from closing when clicking the image
+                openModal(photo);
+            };
+            gallery.appendChild(img);
+        });
+
+        function showSurprise() {
+            const surpriseContainer = document.getElementById('surpriseContainer');
+            surpriseContainer.innerHTML = ''; // Clear previous surprise
+            let img = document.createElement('img');
+            img.src = 'surprise.jpg'; // Change to your surprise image file
+            img.alt = 'Surprise Image';
+            img.className = 'surprise-img';
+            surpriseContainer.appendChild(img);
+        }
+
+        function openModal(src) {
+            modal.style.display = "flex";
+            modalImage.src = src;
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
